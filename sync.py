@@ -93,8 +93,10 @@ def configura_logging(log_dir: str, log_level: str = "INFO") -> logging.Logger:
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
 
-    # Handler console
-    console_handler = logging.StreamHandler(sys.stdout)
+    # Handler console — forza UTF-8 per evitare errori su terminali Windows (cp1252)
+    console_stream = open(sys.stdout.fileno(), mode="w", encoding="utf-8",
+                          buffering=1, closefd=False)
+    console_handler = logging.StreamHandler(console_stream)
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
 
@@ -211,11 +213,23 @@ def connetti_outlook(nome_calendario: str, logger: logging.Logger):
     """
     logger.info("Connessione a Microsoft Outlook in corso...")
     try:
-        outlook = win32com.client.Dispatch("Outlook.Application")
+        # Prova prima a connettersi a un'istanza già aperta
+        try:
+            outlook = win32com.client.GetActiveObject("Outlook.Application")
+            logger.info("Outlook già in esecuzione — connessione riuscita.")
+        except Exception:
+            # Outlook non è aperto: lo avvia tramite COM
+            logger.info("Outlook non in esecuzione — avvio in corso...")
+            outlook = win32com.client.Dispatch("Outlook.Application")
+
         namespace = outlook.GetNamespace("MAPI")
         namespace.Logon()
     except Exception as e:
-        logger.error(f"Impossibile aprire Outlook: {e}")
+        logger.error(
+            f"Impossibile connettersi a Outlook: {e}\n"
+            "  Verifica che Microsoft Outlook Desktop sia installato e\n"
+            "  che l'utente corrente abbia un profilo MAPI configurato."
+        )
         sys.exit(1)
 
     # Cerca il calendario per nome
