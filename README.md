@@ -75,7 +75,7 @@ excel-outlook-sync/
 ### 1. Clona il repository
 
 ```bash
-git clone https://github.com/tuo-username/excel-outlook-sync.git
+git clone https://github.com/jonitorinco1/excel-outlook-sync.git
 cd excel-outlook-sync
 ```
 
@@ -277,3 +277,4 @@ Distribuito sotto licenza **MIT**. Vedi [LICENSE](LICENSE) per i dettagli.
 ---
 
 *Progetto creato per automatizzare la gestione delle scadenze aziendali su Microsoft Outlook.*
+*Repository: [github.com/jonitorinco1/excel-outlook-sync](https://github.com/jonitorinco1/excel-outlook-sync)*
