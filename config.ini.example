@@ -1,0 +1,33 @@
+# ============================================================
+# config.ini.example — Configurazione sincronizzazione Excel → Outlook
+# ============================================================
+# ISTRUZIONI:
+#   1. Copia questo file e rinominalo "config.ini"
+#   2. Modifica i valori secondo il tuo ambiente
+#   3. NON caricare config.ini su GitHub (già escluso dal .gitignore)
+# ============================================================
+
+[Excel]
+# Percorso assoluto o relativo al file Excel da sincronizzare
+percorso_file = C:\Users\TuoNome\Documents\scadenze.xlsx
+
+# Nome del foglio all'interno del file Excel (default: Scadenze)
+nome_foglio = Scadenze
+
+[Outlook]
+# Nome esatto del calendario Outlook di destinazione.
+# Usa "Calendario" per il calendario predefinito (in italiano),
+# oppure "Calendar" se Outlook è in inglese.
+# Per calendari secondari, inserisci il nome esatto come appare in Outlook.
+nome_calendario = Calendario
+
+# Durata predefinita degli appuntamenti in minuti (default: 60)
+durata_default_minuti = 60
+
+[Log]
+# Cartella dove salvare i file di log (verrà creata se non esiste)
+cartella_log = logs
+
+# Livello di log: DEBUG, INFO, WARNING, ERROR
+# DEBUG mostra anche gli eventi "invariati" (più verboso)
+livello = INFO

@@ -1,0 +1,62 @@
+# ============================================================
+# .gitignore — excel-outlook-sync
+# ============================================================
+
+# --- Configurazione personale (contiene percorsi locali) ---
+config.ini
+
+# --- File di log generati a runtime ---
+logs/*.log
+logs/*.log.*
+*.log
+*.log.*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# --- Ambienti virtuali ---
+.venv/
+venv/
+env/
+ENV/
+
+# --- Variabili d'ambiente ---
+.env
+.env.*
+
+# --- IDE e editor ---
+.vscode/
+.idea/
+*.suo
+*.user
+*.swp
+*.swo
+*~
+
+# --- File temporanei di Excel ---
+~$*.xlsx
+~$*.xls
+
+# --- File di sistema Windows ---
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# --- macOS (se aperto su Mac) ---
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- pytest / coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
